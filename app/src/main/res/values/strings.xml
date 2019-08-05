@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">慕课音乐</string>
     <string name="CloudMusic">云音乐</string>
+    <string name="login">登录</string>
+    <string name="username">用户名</string>
+    <string name="phone_num">手机号</string>
 </resources>
