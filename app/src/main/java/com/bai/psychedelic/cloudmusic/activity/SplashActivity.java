@@ -25,7 +25,8 @@ public class SplashActivity extends BaseActivity {
         mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                toMain();
+//                toMain();
+                toLogin();
 //                MyLog.d(TAG,"当前线程为："+Thread.currentThread());
             }
         },3000 );
@@ -33,6 +34,11 @@ public class SplashActivity extends BaseActivity {
 
     private void toMain(){
         Intent intent  = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    private void toLogin(){
+        Intent intent  = new Intent(this,LoginActivity.class);
         startActivity(intent);
         finish();
     }

@@ -7,5 +7,24 @@
     android:paddingStart="@dimen/marginSize"
     android:paddingEnd="@dimen/marginSize"
     >
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/back"
+        android:layout_gravity="center_vertical"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/navBarTitleSize"
+        android:textColor="@android:color/white"
+        android:text="@string/CloudMusic"
+        android:layout_gravity="center"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/me"
+        android:layout_gravity="right|center_vertical"
+        />
 </FrameLayout>
