@@ -65,6 +65,6 @@ public class InputView extends FrameLayout {
      * @return
      */
     public String getInputStr(){
-        return mEtInput.getText().toString().trim();
+        return mEtInput.getText().toString().trim(); 
     }
 }
