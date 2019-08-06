@@ -4,4 +4,11 @@
     <string name="login">登录</string>
     <string name="username">用户名</string>
     <string name="phone_num">手机号</string>
+    <string name="password">密码</string>
+    <string name="logon">立即注册</string>
+    <string name="invaild_phone_num">无效手机号</string>
+    <string name="password_null">密码不可为空！</string>
+    <string name="please_input_phone_num">请输入手机号</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="please_confirm_password">请再次输入密码确认</string>
 </resources>

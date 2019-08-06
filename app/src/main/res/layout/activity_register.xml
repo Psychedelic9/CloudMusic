@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.RegisterActivity">
     <include layout="@layout/nav_bar"/>
     <ImageView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_height="@dimen/inputViewHeight"
         android:layout_marginTop="@dimen/marginSize"
         app:input_icon="@mipmap/phone"
-        app:input_hint="@string/phone_num"
+        app:input_hint="@string/please_input_phone_num"
         app:is_password="false"
         >
     </com.bai.psychedelic.cloudmusic.view.InputView>
@@ -32,26 +32,27 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/inputViewHeight"
         app:input_icon="@mipmap/password"
-        app:input_hint="@string/password"
+        app:input_hint="@string/please_input_password"
         app:is_password="true"
         >
     </com.bai.psychedelic.cloudmusic.view.InputView>
     <View
         style="@style/line" />
-    <TextView
+    <com.bai.psychedelic.cloudmusic.view.InputView
+        android:id="@+id/input_confirm_password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/marginSize"
-        android:text="@string/logon"
-        android:gravity="center_horizontal"
-        android:textSize="@dimen/infoSize"
-        android:textColor="@color/mainColor"
-        android:onClick="onRegisterClick"
-        />
+        android:layout_height="@dimen/inputViewHeight"
+        app:input_icon="@mipmap/password"
+        app:input_hint="@string/please_confirm_password"
+        app:is_password="true"
+        >
+    </com.bai.psychedelic.cloudmusic.view.InputView>
+    <View
+        style="@style/line" />
     <Button
         style="@style/commitBtn"
         android:layout_marginTop="@dimen/marginSize"
-        android:text="@string/login"
-        android:onClick="onCommitClick"
+        android:text="@string/logon"
+        android:onClick="onRegisterClick"
         />
 </LinearLayout>

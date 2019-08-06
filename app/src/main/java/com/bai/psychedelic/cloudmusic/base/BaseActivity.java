@@ -25,7 +25,7 @@ public class BaseActivity extends Activity {
         mIvMe = findViewById(R.id.iv_me);
         mTvTitle = findViewById(R.id.tv_title);
         mIvBack.setVisibility(isShowBack ? View.VISIBLE:View.GONE);
-        mIvBack.setVisibility(isShowMe ? View.VISIBLE:View.GONE);
+        mIvMe.setVisibility(isShowMe ? View.VISIBLE:View.GONE);
         mTvTitle.setText(title);
 
         mIvBack.setOnClickListener(new View.OnClickListener(){
