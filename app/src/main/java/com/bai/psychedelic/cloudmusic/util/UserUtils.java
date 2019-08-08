@@ -1,6 +1,8 @@
 package com.bai.psychedelic.cloudmusic.util;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.bai.psychedelic.cloudmusic.R;
@@ -28,6 +30,11 @@ public class UserUtils {
      * 退出登录
      */
     public static void logout(Context context){
-        ActivityUtils.startActivity(LoginActivity.class);
+        Intent intent = new Intent(context,LoginActivity.class);
+        //添加intent标识符，清理task站并重启一个新的task
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+        //定义Activity跳转动画
+        ((Activity)context).overridePendingTransition(R.anim.open_enter,R.anim.open_exit);
     }
 }

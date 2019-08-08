@@ -16,4 +16,9 @@
     <string name="change_password">修改密码</string>
     <string name="exit_login">退出登录</string>
     <string name="user_center">个人中心</string>
+    <string name="please_enter_origin_pwd">请输入原密码</string>
+    <string name="please_input_new_pwd">请输入新密码</string>
+    <string name="please_confirm_new_pwd">请确认新密码</string>
+    <string name="confirm">确认</string>
+    <string name="change_pwd">修改密码</string>
 </resources>

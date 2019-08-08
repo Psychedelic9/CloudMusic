@@ -7,6 +7,7 @@ import android.view.View;
 import com.bai.psychedelic.cloudmusic.R;
 import com.bai.psychedelic.cloudmusic.base.BaseActivity;
 import com.bai.psychedelic.cloudmusic.util.UserUtils;
+import com.blankj.utilcode.util.ActivityUtils;
 
 public class MeActivity extends BaseActivity {
 
@@ -22,6 +23,7 @@ public class MeActivity extends BaseActivity {
     }
 
     public void OnChangePasswordClick(View view) {
+        ActivityUtils.startActivity(ChangePasswordActivity.class);
     }
 
     public void onLogoutClick(View view) {
