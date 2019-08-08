@@ -4,6 +4,8 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.bai.psychedelic.cloudmusic.R;
+import com.bai.psychedelic.cloudmusic.activity.LoginActivity;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.ToastUtils;
 
@@ -21,5 +23,11 @@ public class UserUtils {
             return false;
         }
         return true;
+    }
+    /**
+     * 退出登录
+     */
+    public static void logout(Context context){
+        ActivityUtils.startActivity(LoginActivity.class);
     }
 }

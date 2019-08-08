@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bai.psychedelic.cloudmusic.R;
+import com.bai.psychedelic.cloudmusic.activity.MeActivity;
+import com.blankj.utilcode.util.ActivityUtils;
 
 public class BaseActivity extends Activity {
     private ImageView mIvBack,mIvMe;
@@ -32,6 +34,12 @@ public class BaseActivity extends Activity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+        mIvMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityUtils.startActivity(MeActivity.class);
             }
         });
 
