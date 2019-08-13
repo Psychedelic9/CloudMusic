@@ -1,6 +1,7 @@
 package com.bai.psychedelic.cloudmusic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bai.psychedelic.cloudmusic.R;
+import com.bai.psychedelic.cloudmusic.activity.AlbumListActivity;
 
 public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.ViewHolder> {
     private Context mContext;
@@ -23,7 +25,13 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, AlbumListActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
 
@@ -33,9 +41,11 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.View
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-
+        private View itemView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.itemView = itemView;
         }
+
     }
 }
