@@ -27,7 +27,8 @@ public class PlayMusicActivity extends BaseActivity {
         mPlayMusicView = findViewById(R.id.play_music_view);
         //TODO:传入专辑封面URL
         mPlayMusicView.setMusicIcon("");
-        mPlayMusicView.playMusic();
+        //TODO:播放音乐地址
+        mPlayMusicView.playMusic("");
     }
 
     public void OnBackClick(View view) {
