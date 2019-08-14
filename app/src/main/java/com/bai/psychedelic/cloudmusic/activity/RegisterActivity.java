@@ -20,7 +20,18 @@ public class RegisterActivity extends BaseActivity {
     private void initView(){
         initNavBar(true,mContext.getString(R.string.logon),false);
     }
+
+    /**
+     * 注册按钮点击事件
+     * @param view
+     */
     public void onRegisterClick(View view) {
+        /**
+         * 1.验证手机号是否合法
+         * 2.验证是否输入了密码，确认密码
+         * 3.验证输入的手机号是否已经被注册
+         * 4.保存用户输入的手机号和密码（MD5加密密码）
+         */
 
     }
 }

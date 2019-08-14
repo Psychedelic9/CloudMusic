@@ -37,4 +37,9 @@ public class UserUtils {
         //定义Activity跳转动画
         ((Activity)context).overridePendingTransition(R.anim.open_enter,R.anim.open_exit);
     }
+
+    public static void registerUser(Context context,String phone,String password,String confirmPassword){
+        
+    }
+
 }
