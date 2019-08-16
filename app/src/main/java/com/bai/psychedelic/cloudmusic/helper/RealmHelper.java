@@ -2,7 +2,11 @@ package com.bai.psychedelic.cloudmusic.helper;
 
 import com.bai.psychedelic.cloudmusic.model.UserModel;
 
+import java.util.List;
+
 import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 public class RealmHelper {
 
@@ -14,7 +18,7 @@ public class RealmHelper {
 
     public void saveUser(UserModel userModel){
         mRealm.beginTransaction();
-        mRealm.insert(userModel);
+        mRealm.insertOrUpdate(userModel);
         mRealm.commitTransaction();
     }
 
@@ -25,5 +29,14 @@ public class RealmHelper {
         if (mRealm!=null && !mRealm.isClosed()){
             mRealm.close();
         }
+    }
+
+    /**
+     * 返回所有用户
+     */
+    public List<UserModel> getAllUser(){
+        RealmQuery<UserModel> query = mRealm.where(UserModel.class);
+        RealmResults<UserModel> results = query.findAll();
+        return results;
     }
 }

@@ -10,9 +10,12 @@ import com.bai.psychedelic.cloudmusic.activity.LoginActivity;
 import com.bai.psychedelic.cloudmusic.helper.RealmHelper;
 import com.bai.psychedelic.cloudmusic.model.UserModel;
 import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
+
+import java.util.List;
 
 public class UserUtils {
     /**
@@ -51,10 +54,16 @@ public class UserUtils {
             return false;
         }
         //TODO:当前手机号是否已经被注册
+        if (userExistFromPhone(phone)){
+            ToastUtils.showLong(R.string.this_phone_num_already_register);
+            return false;
+        }
+
 
         UserModel userModel = new UserModel();
         userModel.setPhone(phone);
-        userModel.setPassword(password);
+
+        userModel.setPassword(EncryptUtils.encryptMD5ToString(password));
         setUser(userModel);
         return true;
     }
@@ -67,6 +76,23 @@ public class UserUtils {
         RealmHelper realmHelper = new RealmHelper();
         realmHelper.saveUser(userModel);
         realmHelper.close();
+    }
+
+    /**
+     * 根据手机号判断用户是否已注册
+     */
+    public static boolean userExistFromPhone(String phone){
+        boolean result = false;
+        RealmHelper realmHelper = new RealmHelper();
+        List<UserModel> allUser = realmHelper.getAllUser();
+        for (UserModel userModel:allUser){
+            if (userModel.getPhone().equals(phone)){
+                result = true;
+                break;
+            }
+        }
+        return result;
+
     }
 
 }

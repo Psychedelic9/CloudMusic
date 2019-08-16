@@ -32,4 +32,5 @@
     <string name="invalidPhoneNum">无效手机号</string>
     <string name="please_confirm_input_password">请确认密码！</string>
     <string name="register_sucess">注册成功！</string>
+    <string name="this_phone_num_already_register">该手机号已被注册！</string>
 </resources>
