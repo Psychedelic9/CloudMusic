@@ -7,8 +7,11 @@ import android.text.TextUtils;
 
 import com.bai.psychedelic.cloudmusic.R;
 import com.bai.psychedelic.cloudmusic.activity.LoginActivity;
+import com.bai.psychedelic.cloudmusic.helper.RealmHelper;
+import com.bai.psychedelic.cloudmusic.model.UserModel;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.RegexUtils;
+import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 
 public class UserUtils {
@@ -39,7 +42,30 @@ public class UserUtils {
     }
 
     public static void registerUser(Context context,String phone,String password,String confirmPassword){
-        
+        if (!RegexUtils.isMobileExact(phone)){
+            ToastUtils.showLong(R.string.invalidPhoneNum);
+            return;
+        }
+        if (StringUtils.isEmpty(password)||!password.equals(confirmPassword)){
+            ToastUtils.showLong(R.string.please_confirm_input_password);
+            return;
+        }
+        //TODO:当前手机号是否已经被注册
+
+        UserModel userModel = new UserModel();
+        userModel.setPhone(phone);
+        userModel.setPassword(password);
+        setUser(userModel);
+    }
+
+
+    /**
+     * 保存User信息到数据库
+     */
+    public static void setUser(UserModel userModel){
+        RealmHelper realmHelper = new RealmHelper();
+        realmHelper.saveUser(userModel);
+        realmHelper.close();
     }
 
 }

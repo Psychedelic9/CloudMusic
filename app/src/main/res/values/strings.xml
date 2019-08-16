@@ -28,6 +28,7 @@
     <string name="author">作者</string>
     <string name="album_music">专辑音乐</string>
     <string name="album_list">专辑列表</string>
-    <string name="music_name">音乐名称</string>
     <string name="music_author">作者</string>
+    <string name="invalidPhoneNum">无效手机号</string>
+    <string name="please_confirm_input_password">请确认密码！</string>
 </resources>

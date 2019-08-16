@@ -6,8 +6,10 @@ import android.view.View;
 
 import com.bai.psychedelic.cloudmusic.R;
 import com.bai.psychedelic.cloudmusic.base.BaseActivity;
+import com.bai.psychedelic.cloudmusic.view.InputView;
 
 public class RegisterActivity extends BaseActivity {
+    private InputView mInputPhone,mInputPassword,mInputConfirmPassword;
     public static final String TAG = "RegisterActivity";
     private Context mContext;
     @Override
@@ -17,8 +19,12 @@ public class RegisterActivity extends BaseActivity {
         mContext = this;
         initView();
     }
-    private void initView(){
+    private void initView()
+    {
         initNavBar(true,mContext.getString(R.string.logon),false);
+        mInputPhone = findViewById(R.id.input_phone);
+        mInputPassword = findViewById(R.id.input_password);
+        mInputConfirmPassword = findViewById(R.id.input_confirm_password);
     }
 
     /**
