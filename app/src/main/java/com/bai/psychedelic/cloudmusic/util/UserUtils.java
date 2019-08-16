@@ -41,14 +41,14 @@ public class UserUtils {
         ((Activity)context).overridePendingTransition(R.anim.open_enter,R.anim.open_exit);
     }
 
-    public static void registerUser(Context context,String phone,String password,String confirmPassword){
+    public static boolean registerUser(Context context,String phone,String password,String confirmPassword){
         if (!RegexUtils.isMobileExact(phone)){
             ToastUtils.showLong(R.string.invalidPhoneNum);
-            return;
+            return false;
         }
         if (StringUtils.isEmpty(password)||!password.equals(confirmPassword)){
             ToastUtils.showLong(R.string.please_confirm_input_password);
-            return;
+            return false;
         }
         //TODO:当前手机号是否已经被注册
 
@@ -56,6 +56,7 @@ public class UserUtils {
         userModel.setPhone(phone);
         userModel.setPassword(password);
         setUser(userModel);
+        return true;
     }
 
 
