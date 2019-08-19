@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.bai.psychedelic.cloudmusic.R;
 import com.bai.psychedelic.cloudmusic.base.BaseActivity;
+import com.bai.psychedelic.cloudmusic.util.UserUtils;
 import com.bai.psychedelic.cloudmusic.view.InputView;
 
 public class ChangePasswordActivity extends BaseActivity {
@@ -27,5 +28,10 @@ public class ChangePasswordActivity extends BaseActivity {
         String oldPwd = mOldPassword.getInputStr();
         String pwd = mPassword.getInputStr();
         String confirmPwd = mConfirmPassword.getInputStr();
+        boolean result = UserUtils.changePassword(oldPwd, pwd, confirmPwd);
+        if (!result){
+            return;
+        }
+        UserUtils.logout(this);
     }
 }

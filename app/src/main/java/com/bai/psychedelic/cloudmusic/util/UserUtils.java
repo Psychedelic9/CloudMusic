@@ -122,4 +122,31 @@ public class UserUtils {
         return UserHelper.getInstance().isLoginUser();
     }
 
+    public static boolean changePassword(String oldPwd,String newPwd,String confirmPwd){
+        if (TextUtils.isEmpty(oldPwd)){
+            ToastUtils.showLong(R.string.please_input_origin_pwd);
+            return false;
+        }
+        if (TextUtils.isEmpty(newPwd)){
+            ToastUtils.showLong(R.string.please_input_new_pwd);
+            return false;
+        }
+        if (TextUtils.isEmpty(confirmPwd)||!newPwd.equals(confirmPwd)){
+            ToastUtils.showLong(R.string.please_confirm_new_pwd);
+            return false;
+        }
+        RealmHelper realmHelper = new RealmHelper();
+        UserModel userModel = realmHelper.getUser();
+        if (!EncryptUtils.encryptMD5ToString(oldPwd).equals(userModel.getPassword())){
+            ToastUtils.showLong(R.string.origin_pwd_wrong);
+            return false;
+        }
+        realmHelper.changePassword(EncryptUtils.encryptMD5ToString(newPwd));
+        realmHelper.close();
+
+        ToastUtils.showLong(R.string.change_success);
+        return true;
+
+    }
+
 }

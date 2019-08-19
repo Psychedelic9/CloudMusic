@@ -37,4 +37,7 @@
     <string name="this_phone_num_not_sign_up">当前手机号未注册！</string>
     <string name="login_success">登陆成功！</string>
     <string name="user_id">用户名:</string>
+    <string name="please_input_origin_pwd">请输入原密码</string>
+    <string name="origin_pwd_wrong">原密码不正确</string>
+    <string name="change_success">修改成功</string>
 </resources>
