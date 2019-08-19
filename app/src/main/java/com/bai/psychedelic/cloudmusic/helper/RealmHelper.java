@@ -39,4 +39,19 @@ public class RealmHelper {
         RealmResults<UserModel> results = query.findAll();
         return results;
     }
+
+    /**
+     * 验证用户信息
+     */
+    public boolean validateUser(String phone,String password){
+        boolean result = false;
+        RealmQuery<UserModel> query = mRealm.where(UserModel.class);
+        query = query.equalTo("phone", phone).equalTo("password", password);
+        UserModel userModel = query.findFirst();
+        if (userModel!=null){
+           result = true;
+        }
+        return result;
+    }
+
 }

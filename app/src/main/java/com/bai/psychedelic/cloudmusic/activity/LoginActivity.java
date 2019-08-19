@@ -9,6 +9,7 @@ import com.bai.psychedelic.cloudmusic.base.BaseActivity;
 import com.bai.psychedelic.cloudmusic.util.UserUtils;
 import com.bai.psychedelic.cloudmusic.view.InputView;
 import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.ToastUtils;
 
 public class LoginActivity extends BaseActivity {
     private Context mContext;
@@ -33,7 +34,7 @@ public class LoginActivity extends BaseActivity {
     public void onCommitClick(View view) {
         String phone = mInputPhone.getInputStr();
         String password = mInputPassword.getInputStr();
-        if (!UserUtils.vaildateLogin(mContext,phone,password)){
+            if (!UserUtils.validateLogin(mContext,phone,password)){
             return;
         }
         ActivityUtils.startActivity(MainActivity.class);

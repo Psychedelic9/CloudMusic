@@ -46,7 +46,7 @@ public class RegisterActivity extends BaseActivity {
 
         boolean result = UserUtils.registerUser(mContext,phone,password,confirmPassword);
         if (!result) return;
-        ToastUtils.showLong(R.string.register_sucess);
+        ToastUtils.showLong(R.string.register_success);
         onBackPressed();
 
     }

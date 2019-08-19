@@ -8,6 +8,7 @@
     tools:context=".activity.MeActivity">
     <include layout="@layout/nav_bar"/>
     <TextView
+        android:id="@+id/tv_user_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"

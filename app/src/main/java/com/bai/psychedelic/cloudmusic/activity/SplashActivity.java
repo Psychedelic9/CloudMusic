@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.bai.psychedelic.cloudmusic.R;
 import com.bai.psychedelic.cloudmusic.base.BaseActivity;
 import com.bai.psychedelic.cloudmusic.util.MyLog;
+import com.bai.psychedelic.cloudmusic.util.UserUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,6 +14,7 @@ import java.util.TimerTask;
 public class SplashActivity extends BaseActivity {
     private static final String TAG = "SplashActivity";
     private Timer mTimer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,24 +23,29 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void init() {
+        final boolean isLogin = UserUtils.validateUserLogin();
+
         mTimer = new Timer();
         mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-//                toMain();
-                toLogin();
-//                MyLog.d(TAG,"当前线程为："+Thread.currentThread());
+                if (isLogin) {
+                    toMain();
+                } else {
+                    toLogin();
+                }
             }
-        },3000 );
+        }, 3000);
     }
 
-    private void toMain(){
-        Intent intent  = new Intent(this,MainActivity.class);
+    private void toMain() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
-    private void toLogin(){
-        Intent intent  = new Intent(this,LoginActivity.class);
+
+    private void toLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

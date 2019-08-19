@@ -5,10 +5,11 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 public class MediaPlayerHelper  {
     private static MediaPlayerHelper instance;
-    private Context mContext;
+    private WeakReference<Context> mContext;
     private MediaPlayer mMediaPlayer;
     private String mPath;
 
@@ -29,7 +30,7 @@ public class MediaPlayerHelper  {
     }
 
     private MediaPlayerHelper(Context context){
-        mContext = context;
+        mContext = new WeakReference<>(context);
         mMediaPlayer = new MediaPlayer();
     }
 
@@ -51,7 +52,7 @@ public class MediaPlayerHelper  {
             mMediaPlayer.reset();
         }
         try {
-            mMediaPlayer.setDataSource(mContext, Uri.parse(path));
+            mMediaPlayer.setDataSource(mContext.get(), Uri.parse(path));
         } catch (IOException e) {
             e.printStackTrace();
         }

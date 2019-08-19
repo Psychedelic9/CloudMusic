@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import com.bai.psychedelic.cloudmusic.R;
 import com.bai.psychedelic.cloudmusic.activity.LoginActivity;
 import com.bai.psychedelic.cloudmusic.helper.RealmHelper;
+import com.bai.psychedelic.cloudmusic.helper.UserHelper;
 import com.bai.psychedelic.cloudmusic.model.UserModel;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.EncryptUtils;
@@ -21,21 +22,43 @@ public class UserUtils {
     /**
      * 验证登录用户合法性
      */
-    public static boolean vaildateLogin(Context context,String phoneNum,String password){
+    public static boolean validateLogin(Context context, String phoneNum, String password){
         if (!RegexUtils.isMobileExact(phoneNum)){
             ToastUtils.showLong(R.string.invaild_phone_num);
             return false;
         }
+
         if (!TextUtils.isEmpty(password)){
             ToastUtils.showLong(R.string.password_null);
             return false;
         }
+
+        if (!userExistFromPhone(phoneNum)){
+            ToastUtils.showLong(R.string.this_phone_num_not_sign_up);
+            return false;
+        }
+
+        RealmHelper realmHelper = new RealmHelper();
+        boolean result = realmHelper.validateUser(phoneNum, EncryptUtils.encryptMD5ToString(password));
+        realmHelper.close();
+        if (!result){
+            ToastUtils.showLong(R.string.phone_or_password_wrong);
+            return false;
+        }
+        //保存用户登录记录
+        UserHelper.getInstance().saveUser(phoneNum);
+        UserHelper.getInstance().setPhone(phoneNum);
+
+        ToastUtils.showLong(R.string.login_success);
         return true;
     }
     /**
      * 退出登录
      */
     public static void logout(Context context){
+
+        UserHelper.getInstance().removeUser();
+
         Intent intent = new Intent(context,LoginActivity.class);
         //添加intent标识符，清理task站并重启一个新的task
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -58,7 +81,6 @@ public class UserUtils {
             ToastUtils.showLong(R.string.this_phone_num_already_register);
             return false;
         }
-
 
         UserModel userModel = new UserModel();
         userModel.setPhone(phone);
@@ -91,8 +113,13 @@ public class UserUtils {
                 break;
             }
         }
+        realmHelper.close();
         return result;
 
+    }
+
+    public static boolean validateUserLogin(){
+        return UserHelper.getInstance().isLoginUser();
     }
 
 }
