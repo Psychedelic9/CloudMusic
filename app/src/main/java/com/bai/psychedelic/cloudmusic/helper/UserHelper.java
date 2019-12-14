@@ -20,9 +20,9 @@ public class UserHelper {
     }
 
     public static UserHelper getInstance() {
-        if (instance != null) {
+        if (instance == null) {
             synchronized (UserHelper.class) {
-                if (instance != null) {
+                if (instance == null) {
                     instance = new UserHelper();
                 }
             }

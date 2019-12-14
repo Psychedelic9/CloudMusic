@@ -12,6 +12,8 @@ import android.widget.ImageView;
 
 import com.bai.psychedelic.cloudmusic.R;
 import com.bai.psychedelic.cloudmusic.helper.MediaPlayerHelper;
+import com.bai.psychedelic.cloudmusic.util.BlurTransformation;
+import com.squareup.picasso.Picasso;
 
 public class PlayMusicView extends FrameLayout {
     private Context mContext;
@@ -47,10 +49,10 @@ public class PlayMusicView extends FrameLayout {
     private void init(Context context) {
         mContext = context;
         mView = LayoutInflater.from(mContext).inflate(R.layout.play_music, this, false);
-        mIvIcon = findViewById(R.id.iv_icon);
-        mIvPlay = findViewById(R.id.iv_play);
-        mFlPlayMusic = findViewById(R.id.fl_play_music);
-        mIvNeedle = findViewById(R.id.iv_needle);
+        mIvIcon = mView.findViewById(R.id.iv_icon);
+        mIvPlay = mView.findViewById(R.id.iv_play);
+        mFlPlayMusic = mView.findViewById(R.id.fl_play_music);
+        mIvNeedle = mView.findViewById(R.id.iv_needle);
         mMediaPlayerHelper = MediaPlayerHelper.getInstance(mContext);
         mFlPlayMusic.setOnClickListener(new OnClickListener() {
             @Override
@@ -109,5 +111,7 @@ public class PlayMusicView extends FrameLayout {
 
     public void setMusicIcon(String icon) {
         //TODO:展示网络专辑封面图片
+        Picasso.get().load(R.mipmap.img1).into(mIvIcon);
+
     }
 }

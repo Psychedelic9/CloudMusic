@@ -27,14 +27,14 @@
     </com.bai.psychedelic.cloudmusic.view.InputView>
     <View
         style="@style/line" />
+
     <com.bai.psychedelic.cloudmusic.view.InputView
         android:id="@+id/input_password"
         android:layout_width="match_parent"
         android:layout_height="@dimen/inputViewHeight"
-        app:input_icon="@mipmap/password"
         app:input_hint="@string/password"
-        app:is_password="true"
-        >
+        app:input_icon="@mipmap/password"
+        app:is_password="true">
     </com.bai.psychedelic.cloudmusic.view.InputView>
     <View
         style="@style/line" />

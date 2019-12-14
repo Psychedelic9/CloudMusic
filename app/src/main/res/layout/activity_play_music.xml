@@ -5,14 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.PlayMusicActivity">
-    <com.bai.psychedelic.cloudmusic.view.PlayMusicView
-        android:id="@+id/play_music_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        >
 
-    </com.bai.psychedelic.cloudmusic.view.PlayMusicView>
     <ImageView
         android:id="@+id/iv_bg"
         android:layout_width="match_parent"
@@ -27,6 +20,13 @@
         android:onClick="OnBackClick"
         android:src="@mipmap/no_bar_back" />
 
+    <com.bai.psychedelic.cloudmusic.view.PlayMusicView
+        android:id="@+id/play_music_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+    </com.bai.psychedelic.cloudmusic.view.PlayMusicView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

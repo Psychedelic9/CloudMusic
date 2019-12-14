@@ -7,7 +7,9 @@ import android.widget.ImageView;
 
 import com.bai.psychedelic.cloudmusic.R;
 import com.bai.psychedelic.cloudmusic.base.BaseActivity;
+import com.bai.psychedelic.cloudmusic.util.BlurTransformation;
 import com.bai.psychedelic.cloudmusic.view.PlayMusicView;
+import com.squareup.picasso.Picasso;
 
 public class PlayMusicActivity extends BaseActivity {
     private ImageView mIvBg;
@@ -23,7 +25,7 @@ public class PlayMusicActivity extends BaseActivity {
     private void initView() {
         //TODO:加载专辑封面图片使用高斯模糊，Picasso
         mIvBg = findViewById(R.id.iv_bg);
-
+        Picasso.get().load(R.mipmap.img1).transform(new BlurTransformation(this)).into(mIvBg);
         mPlayMusicView = findViewById(R.id.play_music_view);
         //TODO:传入专辑封面URL
         mPlayMusicView.setMusicIcon("");

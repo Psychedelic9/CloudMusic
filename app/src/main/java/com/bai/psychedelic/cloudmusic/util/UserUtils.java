@@ -28,7 +28,7 @@ public class UserUtils {
             return false;
         }
 
-        if (!TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)){
             ToastUtils.showLong(R.string.password_null);
             return false;
         }

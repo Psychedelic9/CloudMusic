@@ -56,7 +56,11 @@ public class MediaPlayerHelper  {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mMediaPlayer.prepareAsync();
+        try {
+            mMediaPlayer.prepareAsync();
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
         mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
