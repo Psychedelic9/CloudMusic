@@ -49,5 +49,11 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/titleSize"
             android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/play_music_seek_bar"
+            android:layout_marginTop="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </FrameLayout>

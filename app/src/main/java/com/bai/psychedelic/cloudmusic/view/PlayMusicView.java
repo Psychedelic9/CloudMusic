@@ -11,9 +11,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.bai.psychedelic.cloudmusic.R;
+import com.bai.psychedelic.cloudmusic.activity.PlayMusicActivity;
 import com.bai.psychedelic.cloudmusic.helper.MediaPlayerHelper;
 import com.bai.psychedelic.cloudmusic.util.BlurTransformation;
 import com.squareup.picasso.Picasso;
+
+import java.lang.ref.WeakReference;
 
 public class PlayMusicView extends FrameLayout {
     private Context mContext;
@@ -24,6 +27,7 @@ public class PlayMusicView extends FrameLayout {
     private boolean isPlaying;
     private MediaPlayerHelper mMediaPlayerHelper;
     private String mPath;
+    private PlayMusicActivity activity;
 
 
     public PlayMusicView(Context context) {
@@ -66,6 +70,8 @@ public class PlayMusicView extends FrameLayout {
         mStopNeedleAnim = AnimationUtils.loadAnimation(mContext, R.anim.stop_needle_anim);
 
         addView(mView);
+        activity = new PlayMusicActivity();
+
     }
 
     private void trigger() {
@@ -82,22 +88,23 @@ public class PlayMusicView extends FrameLayout {
         mIvPlay.setVisibility(View.GONE);
         mFlPlayMusic.startAnimation(mPlayMusicAnim);
         mIvNeedle.startAnimation(mPlayNeedleAnim);
-        /**
-         * 1.判断当前音乐是否已经播放状态
-         * 2.如果当前音乐已经在播放，直接start
-         * 3.如果当前非已经播放状态，调用setPath方法
-         */
-        if (mMediaPlayerHelper.getPath() != null && mMediaPlayerHelper.getPath().equals(path)) {
-            mMediaPlayerHelper.start();
-        } else {
-            mMediaPlayerHelper.setPath(path);
-            mMediaPlayerHelper.setOnMediaPlayerHelperListener(new MediaPlayerHelper.OnMediaPlayerHelperListener() {
-                @Override
-                public void onPrepare(MediaPlayer mp) {
-                    mMediaPlayerHelper.start();
-                }
-            });
-        }
+//        /**
+//         * 1.判断当前音乐是否已经播放状态
+//         * 2.如果当前音乐已经在播放，直接start
+//         * 3.如果当前非已经播放状态，调用setPath方法
+//         */
+//        if (mMediaPlayerHelper.getPath() != null && mMediaPlayerHelper.getPath().equals(path)) {
+//            mMediaPlayerHelper.start();
+//        } else {
+//            mMediaPlayerHelper.setPath(path);
+//            mMediaPlayerHelper.setOnMediaPlayerHelperListener(new MediaPlayerHelper.OnMediaPlayerHelperListener() {
+//                @Override
+//                public void onPrepare(MediaPlayer mp) {
+//                    mMediaPlayerHelper.start();
+//                }
+//            });
+//        }
+        activity.playMusic();
     }
 
     public void stopMusic() {
@@ -105,7 +112,9 @@ public class PlayMusicView extends FrameLayout {
         mIvPlay.setVisibility(View.VISIBLE);
         mFlPlayMusic.clearAnimation();
         mIvNeedle.startAnimation(mStopNeedleAnim);
-        mMediaPlayerHelper.pause();
+//        mMediaPlayerHelper.pause();
+        activity.playMusic();
+
     }
 
 
@@ -113,5 +122,8 @@ public class PlayMusicView extends FrameLayout {
         //TODO:展示网络专辑封面图片
         Picasso.get().load(R.mipmap.img1).into(mIvIcon);
 
+    }
+    public interface PlayMusicViewInterface{
+        void playMusic();
     }
 }
